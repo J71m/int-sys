@@ -30,15 +30,11 @@ def update_board(player, choice):
     board[row][col] = player
     
 def win_indices(n):
-    # Rows
     for r in range(n):
         yield [(r, c) for c in range(n)]
-    # Columns
     for c in range(n):
         yield [(r, c) for r in range(n)]
-    # Diagonal top left to bottom right
     yield [(i, i) for i in range(n)]
-    # Diagonal top right to bottom left
     yield [(i, n - 1 - i) for i in range(n)]
 
 
@@ -104,9 +100,9 @@ def ai_first_empty():
 
 def ai_next_move():
     next_win_move = ai_win_next()
+    next__not_lose_move = ai_not_lose_next()
     if  next_win_move!= False:
         return next_win_move
-    next__not_lose_move = ai_not_lose_next()
     elif next__not_lose_move != False:
         return next__not_lose_move
     else:
